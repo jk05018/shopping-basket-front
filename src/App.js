@@ -29,6 +29,7 @@ function App() {
     const [items, setItems] = useState([]);
     const [voucher_item, setVoucherItem] = useState([]);
 
+
     // 렌더링이 끝난 이후에 이게 실행된다.
     // component가 렌더링 될때마다 react에게 어떤 일을 실행시켜 달라고 할 수 있다.
     useEffect(() => {
@@ -69,11 +70,13 @@ function App() {
                     price: v.price,
                     quantity: v.count
                 }))
-            }).then(v => alert("주문이 정상적으로 접수되었습니다"
-                , e => {
-                    alert("서버 장애");
-                    console.error(e);
-                }))
+            }).then(v => {
+                alert("주문이 정상적으로 접수되었습니다");
+                setItems([]);
+                setVoucherItem([]);
+                window.location.replace("/")
+            })
+                .catch(e => alert(e.message))
         }
     }
 

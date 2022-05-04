@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {SummaryItem} from "./SummaryItem";
 import {SummaryVoucher} from "./SummaryVoucher";
 
@@ -14,6 +14,7 @@ export function Summary({items = [], voucher_item= [], onOrderSubmit}) {
     const [order, setOrder] = useState({
         email: "", address: "", postcode : ""
     });
+
     const handleEmailInputChanged = (e) => setOrder({...order, email: e.target.value})
     const handleAddressInputChanged = (e) => setOrder({...order, address: e.target.value})
     const handlePostcodeInputChanged = (e) => setOrder({...order, postcode: e.target.value})
@@ -24,7 +25,6 @@ export function Summary({items = [], voucher_item= [], onOrderSubmit}) {
             onOrderSubmit(order);
         }
     }
-
 
     return (
         <React.Fragment>
